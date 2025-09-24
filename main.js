@@ -1,12 +1,13 @@
 const listaPokemon = document.querySelector("#listaPokemon");
 const botonesHeader = document.querySelectorAll(".btn-header");
 let URL = "https://pokeapi.co/api/v2/pokemon/";
-
+// trae los 150 pokemones y se resetea//
 for (let i = 1; i <= 151; i++){
     fetch(URL + i)
     .then ((response) => response.json())
     .then (data => mostrarPokemon(data))
 }
+// informacion de tarjetas por tipo y que pokemon//
 function mostrarPokemon(poke) {
 
 let tipos = poke.types.map((type) =>`<p class="${type.type.name} tipo">${type.type.name}</p>`);
@@ -42,7 +43,7 @@ div.innerHTML = `  <p class="pokemon-id-back">#${pokeId}</p>
                  `;
                  listaPokemon.append(div);
 }
-
+//botones del header funcionales//
 botonesHeader.forEach(boton => boton.addEventListener("click", (event) =>{
     const botonId = event.currentTarget.id;
 listaPokemon.innerHTML = "";
